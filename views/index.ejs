@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Hub</title>
+    <link rel="icon" href="/logo.png">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <form action="/generate" method="POST" class="buttons">
+        <button type="submit" value="Assembler Bot" name="getList">R 1</button>
+        <button type="submit" value="Welding Bot" name="getList">R 2</button>
+        <button type="submit" value="Inspection Drone" name="getList">R 3</button>
+    </form>
+    <div id="container">
+    <% if(locals.accessKey) { %>
+        <h1 id="title">
+            <%= accessKey.category %>
+        </h1>
+       <h2>About the Machines :</h2>
+       <ul id="components">
+        <% accessKey.specifications.components.forEach((param) => { %>
+            <li> <%= param.module  %> </li>
+            <li> <%= param.quantity  %> </li>
+            <li> <%= param.parts  %> </li>
+        <% })  %>
+       </ul>
+    <% } else{ %>
+        <h2>Check for other one.</h2>
+    <% } %>
+
+    </div>
+
+    <%- include("./partials/footer.ejs") %>
+    </body>
+    </html>

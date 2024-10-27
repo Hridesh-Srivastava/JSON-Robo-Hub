@@ -1,0 +1,177 @@
+ :root {
+    --primary-color: #000000;
+    --secondary-color: #001f3f;
+    --accent-color: #00b4d8;
+    --highlight-color: #00ffff;
+    --text-color: #ffffff;
+    --background-color: #000814;
+    --button-size: 160px;
+    --transition-speed: 0.3s;
+  }
+  
+  html {
+    height: 100%;
+    font-size: 16px;
+    scrollbar-width: none;
+  }
+  
+  body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--background-color));
+    color: var(--text-color);
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+  }
+  
+  h1 {
+    font-size: 4rem;
+    text-align: center;
+    color: var(--accent-color);
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    animation: glow 2s ease-in-out infinite alternate, pulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color);
+    }
+    to {
+      text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--highlight-color), 0 0 30px var(--highlight-color);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  h2 {
+    color: var(--accent-color);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 2rem;
+  }
+  
+  .buttons button {
+    color: white !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--secondary-color);
+    cursor: pointer;
+    padding: 0;
+    width: var(--button-size);
+    height: var(--button-size);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
+    overflow: visible;
+    margin-top: 200px;
+  }
+  
+  .buttons button:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    background-color:rgb(47, 116, 116);
+  }
+  
+  .buttons button img {
+    width: calc(var(--button-size) * 0.7);
+    height: calc(var(--button-size) * 0.7);
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid var(--highlight-color);
+    transition: transform var(--transition-speed);
+  }
+  
+  .buttons button:hover img {
+    transform: scale(1.1);
+  }
+  
+  #container {
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  #title {
+    color: black;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  #components {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  #components li {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
+  }
+  
+  #components li:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 3rem;
+    }
+  
+    .buttons button {
+      --button-size: 150px;
+    }
+  
+    #container {
+      padding: 1.5rem;
+    }
+  
+    #components {
+      grid-template-columns: 1fr;
+    }
+  }
