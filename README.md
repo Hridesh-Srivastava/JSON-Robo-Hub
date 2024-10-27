@@ -17,13 +17,13 @@ This project showcases JSON learning and usage through a Node.js application.
 - Server-side rendering with EJS templates.
 - Basic styling with CSS for UI enhancements.
 
-<h1></h1> Usage
+<h1>Usage</h1> 
 
 ## **Clone the repository:**
 
    ```
    git clone https://github.com/Hridesh-Srivastava/JSON-Robo-Hub.git
-   
+   ```
 ## Navigate to the project directory:
 ```
 cd jsonPract
@@ -41,8 +41,11 @@ Open your browser and visit localhost:3000 to view the application.
 
 ## Project Structure
 /public: Contains static assets like CSS styles and images.
+<br>
 /views: Holds the EJS template files for server-side rendering.
+<br>
 /views/partials: Contains partial templates like footer
+<br>
 data.json: Contains JSON data used in the application.
 
 ## Contribution
