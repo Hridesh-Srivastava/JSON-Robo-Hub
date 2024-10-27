@@ -44,7 +44,7 @@ Open your browser and visit localhost:3000 to view the application.
 <br>
 /views: Holds the EJS template files for server-side rendering.
 <br>
-/views/partials: Contains partial templates like footer
+/views/partials: Contains partial templates like footer.
 <br>
 data.json: Contains JSON data used in the application.
 
