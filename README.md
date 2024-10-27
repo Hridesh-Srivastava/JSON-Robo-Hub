@@ -1,6 +1,6 @@
 # Robo Hub
 
-Discover our cutting-edge range of specialized robots designed to revolutionize industrial processes. Our robots are built with precision and high efficiency to streamline operations, reduce human error, and increase productivity. Whether you need robots for assembly, logistics, or specialized industrial tasks, Robo Hub has the right solution tailored to your needs. With a focus on safety, speed, and durability, our robots represent the future of industrial automation.
+Discover our cutting-edge range of specialized robots designed to revolutionize industrial processes. Our robots are built with precision and high efficiency to streamline operations, reduce human error, and increase productivity.
 
 This project showcases JSON learning and usage through a Node.js application.
 
