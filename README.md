@@ -17,9 +17,9 @@ This project showcases JSON learning and usage through a Node.js application.
 - Server-side rendering with EJS templates.
 - Basic styling with CSS for UI enhancements.
 
-## Usage
+<h1></h1> Usage
 
-1. **Clone the repository:**
+## **Clone the repository:**
 
    ```
    git clone https://github.com/Hridesh-Srivastava/JSON-Robo-Hub.git
