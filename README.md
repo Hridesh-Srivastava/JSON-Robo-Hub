@@ -52,4 +52,4 @@ data.json: Contains JSON data used in the application.
 Pull requests are most welcome! Feel free to open an issue if you find a bug or want to suggest improvements.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for more details.
