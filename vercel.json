@@ -11,12 +11,12 @@
     ],
     "routes": [
       {
-        "src": "/logo.png",
-        "dest": "/index.js"
-      },
-      {
         "src": "/styles/(.*)",
         "dest": "/public/styles/$1"
+      },
+      {
+        "src": "/logo.png",
+        "dest": "/public/logo.png"
       },
       {
         "src": "/(.*)",

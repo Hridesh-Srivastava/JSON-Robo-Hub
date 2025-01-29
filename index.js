@@ -121,51 +121,57 @@ let jsonData = `[
 ]`;
 
 
+const robotsData = JSON.parse(jsonData);
+
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 
-app.use(express.static('public'));
-app.use('/styles', express.static(path.join(__dirname, 'public/styles')));
-app.use('/public', express.static(path.join(__dirname, 'public')));
-
-app.get('/logo.png', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'logo.png'));
-});
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-
-let roboData;
-
 app.get('/',(_ , res) => {
-    res.render('index.ejs' , {
-        accessKey : roboData,
+    const robotId = _.query.robot;
+    let accessKey = null;
+    
+    if (robotId) {
+        switch (robotId) {
+            case 'assembler':
+                accessKey = robotsData[0];
+                break;
+            case 'welding':
+                accessKey = robotsData[1];
+                break;
+            case 'inspection':
+                accessKey = robotsData[2];
+                break;
+        }
+    }
+    
+    res.render('index.ejs', {
+        accessKey: accessKey
     });
 });
 
-app.post('/generate', (req ,res) => {
-    try {
-        switch (req.body.getList) {
-            case 'Assembler Bot':
-                roboData = JSON.parse(jsonData)[0];
-                break;
-            case 'Welding Bot':
-                roboData = JSON.parse(jsonData)[1];
-                break;
-            case 'Inspection Drone':
-                roboData = JSON.parse(jsonData)[2];
-                break;
-            default:
-                console.log('Oops! Something went wrong.');
-                break;
-        }
-        res.redirect('/');
-    } catch (error) {
-        console.error('Error processing request:', error);
-        res.status(500).send('Internal Server Error');
+app.post('/generate', (req, res) => {
+    let redirectPath = '/';
+    
+    switch (req.body.getList) {
+        case 'Assembler Bot':
+            redirectPath = '/?robot=assembler';
+            break;
+        case 'Welding Bot':
+            redirectPath = '/?robot=welding';
+            break;
+        case 'Inspection Drone':
+            redirectPath = '/?robot=inspection';
+            break;
     }
+    
+    res.redirect(redirectPath);
 });
 
 app.listen(port , () => {
