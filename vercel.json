@@ -2,13 +2,14 @@
     "version": 2,
     "builds": [
       {
+        "src": "public/**/*",
+        "use": "@vercel/static"
+      },
+      {
         "src": "index.js",
         "use": "@vercel/node",
         "config": {
-          "includeFiles": [
-            "views/**/*",
-            "public/**/*"
-          ]
+          "includeFiles": ["views/**"]
         }
       }
     ],
@@ -18,7 +19,7 @@
         "dest": "/public/styles/$1"
       },
       {
-        "src": "/(.+\\.png)",
+        "src": "/(.*\\.(css|png|jpg|svg))",
         "dest": "/public/$1"
       },
       {
