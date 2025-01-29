@@ -129,7 +129,13 @@ app.use(express.static('public'));
 app.use('/styles', express.static(path.join(__dirname, 'public/styles')));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
+app.get('/logo.png', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'logo.png'));
+});
+
 app.use(bodyParser.urlencoded({extended:true}));
+
+
 
 let roboData;
 
