@@ -120,11 +120,11 @@ let jsonData = `[
   }
 ]`;
 
-// Configure view engine before routes
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Serve static files - add multiple static paths
+
 app.use(express.static('public'));
 app.use('/styles', express.static(path.join(__dirname, 'public/styles')));
 app.use('/public', express.static(path.join(__dirname, 'public')));

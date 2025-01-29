@@ -9,17 +9,21 @@
         "src": "index.js",
         "use": "@vercel/node",
         "config": {
-          "includeFiles": ["views/**"]
+          "includeFiles": ["views/**", "public/**"]
         }
       }
     ],
     "routes": [
       {
+        "src": "/logo.png",
+        "dest": "/public/logo.png"
+      },
+      {
         "src": "/styles/(.*)",
         "dest": "/public/styles/$1"
       },
       {
-        "src": "/(.*\\.(css|png|jpg|svg))",
+        "src": "/(.*\\.(png|jpg|jpeg|svg|ico))",
         "dest": "/public/$1"
       },
       {
