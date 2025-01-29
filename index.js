@@ -1,11 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = 3000;
-
-app.set('view engine', 'ejs');
-app.set('views', './views');
+const port = process.env.PORT || 3000;
 
 let jsonData = `[
   {
@@ -118,7 +120,14 @@ let jsonData = `[
   }
 ]`;
 
-app.use(express.static('public/'));
+// Set the view engine and views directory
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/styles', express.static(path.join(__dirname, 'public/styles')));
+
 app.use(bodyParser.urlencoded({extended:true}));
 
 let roboData;
@@ -130,22 +139,26 @@ app.get('/',(_ , res) => {
 });
 
 app.post('/generate', (req ,res) => {
-    switch (req.body.getList) {
-        case 'Assembler Bot':
-            roboData = JSON.parse(jsonData)[0]; //parsing JSON to JS object
-            break;
-        case  'Welding Bot':
-            roboData = JSON.parse(jsonData)[1];
-            break;
-        case 'Inspection Drone':
-            roboData = JSON.parse(jsonData)[2];
-            break;
-        default:
-            console.log('Oops! Something went wrong.');
-            break;
+    try {
+        switch (req.body.getList) {
+            case 'Assembler Bot':
+                roboData = JSON.parse(jsonData)[0];
+                break;
+            case 'Welding Bot':
+                roboData = JSON.parse(jsonData)[1];
+                break;
+            case 'Inspection Drone':
+                roboData = JSON.parse(jsonData)[2];
+                break;
+            default:
+                console.log('Oops! Something went wrong.');
+                break;
+        }
+        res.redirect('/');
+    } catch (error) {
+        console.error('Error processing request:', error);
+        res.status(500).send('Internal Server Error');
     }
-
-    res.redirect('/');
 });
 
 app.listen(port , () => {
